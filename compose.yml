@@ -2,7 +2,7 @@
 version: "3"
 services:
  devopsdb:
-   container_name: mydevopsdb
+   container_name: devopsdb
    image: shaikmustafa/valluri:dbimage
    ports:
      - "3306:3306"
@@ -13,4 +13,4 @@ services:
    ports:
      - "1234:8080"
    depends_on:
-     - "mydevopsdb"
+     - "devopsdb"
