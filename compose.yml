@@ -1,15 +1,5 @@
 ---
 services: 
- appservice: 
-    container_name: devops-cont 
-    build: ./Docker-app 
-    ports: 
-       - "1111:8080" 
-    volumes: 
-       - appvolume:/usr/share/nginx/html/
-    networks: 
-       - appnetwork 
-       - dbnetwork
  dbservice:
     container_name: devops-db-cont 
     build: ./Docker-db 
@@ -20,6 +10,19 @@ services:
     networks: 
         - dbnetwork 
         - appnetwork
+
+ appservice: 
+   container_name: devops-cont 
+   build: ./Docker-app 
+   ports: 
+      - "1111:8080" 
+   depends_on:
+    - "devops-db-cont"
+   volumes: 
+      - appvolume:/usr/share/nginx/html/
+   networks: 
+      - appnetwork 
+      - dbnetwork
 volumes: 
   appvolume: 
   dbvolume:
