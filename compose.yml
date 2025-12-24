@@ -1,6 +1,6 @@
 ---
 services: 
- dbservice:
+ devopsdb:
     container_name: devopsdb 
     build: ./Docker-db 
     ports: 
