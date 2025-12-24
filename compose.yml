@@ -1,7 +1,7 @@
 ---
 services: 
  dbservice:
-    container_name: devops-db-cont 
+    container_name: devopsdb 
     build: ./Docker-db 
     ports: 
        - "2222:3306" 
@@ -17,7 +17,7 @@ services:
    ports: 
       - "1111:8080" 
    depends_on:
-    - "devops-db-cont"
+    - "devopsdb"
    volumes: 
       - appvolume:/usr/share/nginx/html/
    networks: 
